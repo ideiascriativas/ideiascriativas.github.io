@@ -1,7 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Ubuntu');
+
+@mixin defineTimeAnimation($duration: 1s, $delay: 0, $count: 1) {
+    -webkit-animation-duration: $duration;
+    -webkit-animation-delay: $delay;
+    -webkit-animation-iteration-count: $count;
+    -o-animation-duration: $duration;
+    -o-animation-delay: $delay;
+    -o-animation-iteration-count: $count;
+    -moz-animation-duration: $duration;
+    -moz-animation-delay: $delay;
+    -moz-animation-iteration-count: $count;
+}
+
 * {
     margin: 0;
     padding: 0;
     color: white;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
 }
 
 .full-page {
@@ -28,24 +46,33 @@
 }
 
 .show {
-    display: initial !important;
+    display: inherit !important;
 }
 
 .backdrop {
     background: #000;
-    opacity: 0.7;
+    opacity: 0;
     z-index: 2;
 }
 
 .background-image {
-    position: fixed;
-    z-index: 1;
+    display: none;
+    background-attachment: fixed !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
 }
 
 #background-1 {
-    background: url('../images/background-1.jpg') no-repeat fixed;
-    background-size: cover;
-    background-position: center;
+    background: url('../images/background-1.jpg');
+}
+
+#background-2 {
+    background: url('../images/background-2.jpg');
+}
+
+#background-3 {
+    background: url('../images/background-3.jpg');
 }
 
 .content {
@@ -97,8 +124,9 @@
         width: 60%;
         margin: 0 auto;
         h1 {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 300%;
             max-width: 600px;
-            ;
             min-width: 300px;
             display: none;
         }
@@ -108,38 +136,33 @@
     }
     .subtitles {
         position: absolute;
-        bottom: 200px;
+        bottom: 40px;
         width: 100%;
         margin: 0 auto;
-        div {
+        .subtitle {
             display: none;
-            width: 200px;
-            margin: 0 auto;
-            position: relative;
+            @include defineTimeAnimation(1s, 0, 1);
         }
         .rotate {
             transform: rotate(-90deg);
-            width: 60px;
+            width: 70px;
+            position: absolute;
+            bottom: 10px;
+            margin-left: 40%;
+            font-size: 100%;
         }
         .special {
-            position: absolute;
-            right: 10px;
-            top: 0px;
+            width: 130px;
+            margin: 0 auto;
+            font-size: 120%;
+            span {
+                display: table;
+                background: linear-gradient(to right, #2E28F1, #7B04F9);
+                padding: 10px;
+            }
         }
         .show {
-            display: block;
+            display: inline-block;
         }
     }
-}
-
-@mixin defineTimeAnimation($duration: 1s, $delay: 0, $count: 1) {
-    -webkit-animation-duration: $duration;
-    -webkit-animation-delay: $delay;
-    -webkit-animation-iteration-count: $count;
-    -o-animation-duration: $duration;
-    -o-animation-delay: $delay;
-    -o-animation-iteration-count: $count;
-    -moz-animation-duration: $duration;
-    -moz-animation-delay: $delay;
-    -moz-animation-iteration-count: $count;
 }
