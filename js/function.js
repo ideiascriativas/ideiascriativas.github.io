@@ -132,13 +132,13 @@ $(document).ready(function () {
         if (event.deltaY > 0 && canScroll) {
             if (countTitle < 4 && countTitle > 1){
                 countTitle--;
-                disabledScrollForSeconds(3);
+                disabledScrollForSeconds(2);
                 changeTitleAndBack();
             }
         } else if (event.deltaY < 0 && canScroll){
             if (countTitle < 3 && countTitle > 0) {
                 countTitle++;
-                disabledScrollForSeconds(3);
+                disabledScrollForSeconds(2);
                 changeTitleAndBack();
             }
         }
