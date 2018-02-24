@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Ubuntu');
-
-@mixin defineTimeAnimation($duration: 1s, $delay: 0, $count: 1) {
+@mixin defineTimeAnimation($duration: 1s,
+$delay: 0,
+$count: 1) {
     -webkit-animation-duration: $duration;
     -webkit-animation-delay: $delay;
     -webkit-animation-iteration-count: $count;
@@ -93,10 +94,49 @@ body {
                 width: 80px;
             }
         }
+        .little-menu {
+            display: none;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            padding: 55px 0;
+            button {
+                z-index: 1000;
+                cursor: pointer;
+                outline: none;
+            }
+        }
+        .zIndex {
+            z-index: 100;
+        }
+        #navigation {
+            z-index: 99;
+            position: fixed;
+            top: 0;
+            height: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            nav {
+                margin: 0 auto;
+                list-style: none;
+                text-align: center;
+                a {
+                    text-decoration: none;
+                    padding: 10px;
+                    display: list-item;
+                }
+            }
+        }
+        .not-show {
+            display: none !important;
+        }
         .menu {
             position: absolute;
             top: 70px;
-            right: 80px;
+            right: 180px;
             text-transform: uppercase;
             nav {
                 list-style: none;
@@ -116,12 +156,30 @@ body {
                 }
             }
         }
+        .language {
+            position: absolute;
+            top: 70px;
+            right: 80px;
+            a {
+                text-transform: uppercase;
+                font-weight: bold;
+                text-decoration: none;
+                color: rgb(207, 206, 206);
+                margin: 0 30px;
+                font-size: 0.85em;
+                &:hover {
+                    color: #fff;
+                    transition-duration: 1s;
+                }
+            }
+        }
     }
     .titles {
         display: flex;
         align-items: center;
         height: 100%;
         width: 60%;
+        min-width: 300px;
         margin: 0 auto;
         h1 {
             font-family: 'Ubuntu', sans-serif;
@@ -142,28 +200,98 @@ body {
         margin: 0 auto;
         .subtitle {
             display: none;
-            @include defineTimeAnimation(1s, 0, 1);
+            @include defineTimeAnimation(1s,
+            0,
+            1);
+            text-align: center;
         }
         .rotate {
-            transform: rotate(-90deg);
-            width: 70px;
-            position: absolute;
             bottom: 10px;
-            margin-left: 40%;
             font-size: 100%;
         }
         .special {
-            width: 130px;
+            width: 200px;
             margin: 0 auto;
             font-size: 120%;
-            span {
-                display: table;
-                background: linear-gradient(to right, #2E28F1, #7B04F9);
-                padding: 10px;
-            }
+            background: linear-gradient(to right, #2E28F1, #7B04F9);
+            padding: 4px;
         }
         .show {
             display: inline-block;
+        }
+    }
+}
+
+.components {
+    position: absolute;
+    right: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    .up {
+        width: 6px;
+        height: 6px;
+        border: 3px solid #fff;
+        cursor: pointer;
+        border-radius: 50%;
+        margin: 5px 0;
+    }
+    .closed {
+        width: 2px;
+        height: 15px;
+        background: #fff;
+        margin: 5px 0;
+    }
+    .open {
+        width: 2px;
+        height: 100px;
+        background: #fff;
+        margin: 5px 0;
+    }
+    .down {
+        width: 6px;
+        height: 6px;
+        border: 3px solid #fff;
+        cursor: pointer;
+        border-radius: 50%;
+        margin: 5px 0;
+    }
+}
+
+@media(max-width: 1000px) {
+    .content {
+        header {
+            .menu {
+                display: none;
+            }
+            .little-menu {
+                display: block;
+            }
+        }
+    }
+}
+
+@media(max-width: 720px) {
+    .content {
+        header {
+            .little-menu {
+                padding: 16px 0;
+            }
+            .logo {
+                top: 10px;
+                left: 10px;
+                img {
+                    width: 60px;
+                }
+            }
+            .language {
+                top: 30px;
+                right: 20px;
+                a {
+                    margin: 0;
+                }
+            }
         }
     }
 }

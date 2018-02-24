@@ -61,13 +61,25 @@ function disabledScrollForSeconds(seconds) {
     }, seconds * 1000)
 }
 
+function resetBar() {
+    $('#div-1').removeClass('open');
+    $('#div-2').removeClass('open');
+    $('#div-3').removeClass('open');
+}
+
+function updateBar() {
+    resetBar();
+    var bar = "#div-" + countTitle;
+    $(bar).addClass('open');
+}
+
 function changeTitleAndBack() {
     resetBackAndTitle();
     intervalSubtitleManager(false);
     intervalSubtitleManager(true);
     var background = "#background-" + countTitle;
     var title = "#title-" + countTitle;
-    
+    updateBar();
     $(background).addClass('show');
     $(title).addClass('show');
     $(background).animateCss(sortedAnimation());
@@ -84,15 +96,11 @@ function changeSubTitle() {
     var subtitle = '#sub-title-' + countTitle + "-" + countSubTitle;
     $(subtitle).addClass('show');
     $(subtitle).animateCss(sortedAnimation(), function (component) {
-        $(subtitle).css({
-            'animationDelay': '4s'
-        });
-        $(subtitle).animateCss('zoomOut', function (component) {
-            $(subtitle).css({
-                'animationDelay': '0s'
+        setTimeout(function (){
+            $(subtitle).animateCss('zoomOut', function (component) {
+                resetSubTitle();
             });
-            $(subtitle).removeClass('show');
-        });
+        }, 4000);
     })
     if (countSubTitle === 3) {
         this.countSubTitle = 1;
@@ -123,6 +131,20 @@ function hideLoading() {
     });
 }
 
+function nextBackground() {
+    if (countTitle < 3 && countTitle > 0) {
+        countTitle++;
+        changeTitleAndBack();
+    }
+}
+
+function backBackground() {
+    if (countTitle < 4 && countTitle > 1){
+        countTitle--;
+        changeTitleAndBack();
+    }
+}
+
 $(document).ready(function () {
     hideLoading();
     setTimeout(function () {
@@ -143,4 +165,10 @@ $(document).ready(function () {
             }
         }
     });
+    
+    $('#hambuguer-icon-menu').click(function () {
+        $(this).toggleClass('is-active');
+        $('#navigation').toggleClass('not-show');
+        $('.little-menu').toggleClass('zIndex');
+    })
 });
