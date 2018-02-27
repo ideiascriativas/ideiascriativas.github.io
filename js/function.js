@@ -32,15 +32,15 @@ $.fn.extend({
 });
 
 var intervalSubTitleId = null;
-var intervalSubtitleManager =  function (flag) {
+var intervalSubtitleManager = function (flag) {
     if (flag) {
         resetSubTitle();
         countSubTitle = 1;
         changeSubTitle();
         intervalSubTitleId = setInterval(function () {
             changeSubTitle();
-        },6500);
-    }else {
+        }, 6500);
+    } else {
         clearInterval(intervalSubTitleId);
     }
 }
@@ -56,7 +56,7 @@ function resetBackAndTitle() {
 
 function disabledScrollForSeconds(seconds) {
     this.canScroll = false;
-    setTimeout(function (){
+    setTimeout(function () {
         this.canScroll = true;
     }, seconds * 1000)
 }
@@ -96,7 +96,7 @@ function changeSubTitle() {
     var subtitle = '#sub-title-' + countTitle + "-" + countSubTitle;
     $(subtitle).addClass('show');
     $(subtitle).animateCss(sortedAnimation(), function (component) {
-        setTimeout(function (){
+        setTimeout(function () {
             $(subtitle).animateCss('zoomOut', function (component) {
                 resetSubTitle();
             });
@@ -139,10 +139,16 @@ function nextBackground() {
 }
 
 function backBackground() {
-    if (countTitle < 4 && countTitle > 1){
+    if (countTitle < 4 && countTitle > 1) {
         countTitle--;
         changeTitleAndBack();
     }
+}
+
+function addEffect() {
+    $('.info').toggleClass('toEffect');
+    $('.video').toggleClass('toEffect');
+    $('.effectBack').animateCss('fadeOutRightBig');
 }
 
 $(document).ready(function () {
@@ -152,12 +158,12 @@ $(document).ready(function () {
     }, 100);
     $(window).mousewheel(function (event) {
         if (event.deltaY > 0 && canScroll) {
-            if (countTitle < 4 && countTitle > 1){
+            if (countTitle < 4 && countTitle > 1) {
                 countTitle--;
                 disabledScrollForSeconds(2);
                 changeTitleAndBack();
             }
-        } else if (event.deltaY < 0 && canScroll){
+        } else if (event.deltaY < 0 && canScroll) {
             if (countTitle < 3 && countTitle > 0) {
                 countTitle++;
                 disabledScrollForSeconds(2);
@@ -165,7 +171,29 @@ $(document).ready(function () {
             }
         }
     });
-    
+
+    $(function () {
+        $(window).swipe({
+            //Generic swipe handler for all directions
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                if (direction === 'up') {
+                    if (countTitle < 3 && countTitle > 0) {
+                        countTitle++;
+                        disabledScrollForSeconds(2);
+                        changeTitleAndBack();
+                    }
+                } else if (direction === 'down') {
+                    if (countTitle < 4 && countTitle > 1) {
+                        countTitle--;
+                        changeTitleAndBack();
+                    }
+                }
+            }
+        });
+
+        //Set some options later
+        $("#test").swipe({ fingers: 2 });
+    });
     $('#hambuguer-icon-menu').click(function () {
         $(this).toggleClass('is-active');
         $('#navigation').toggleClass('not-show');
