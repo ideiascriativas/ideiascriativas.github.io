@@ -4,33 +4,6 @@ var canScroll = true;
 
 var animationsBack = ['jackInTheBox', 'slideInRight', 'zoomInUp', 'flipInY', 'bounce', 'rubberBand', 'tada', 'jello', 'fadeInLeft', 'fadeInRight', 'bounceInRigth', 'bounceInLeft', 'zoomInLeft', 'zoomInRight'];
 
-$.fn.extend({
-    animateCss: function (animationName, callback) {
-        var animationEnd = (function (el) {
-            var animations = {
-                animation: 'animationend',
-                OAnimation: 'oAnimationEnd',
-                MozAnimation: 'mozAnimationEnd',
-                WebkitAnimation: 'webkitAnimationEnd',
-            };
-
-            for (var t in animations) {
-                if (el.style[t] !== undefined) {
-                    return animations[t];
-                }
-            }
-        })(document.createElement('div'));
-
-        this.addClass('animated ' + animationName).one(animationEnd, function () {
-            $(this).removeClass('animated ' + animationName);
-
-            if (typeof callback === 'function') callback(this);
-        });
-
-        return this;
-    },
-});
-
 var intervalSubTitleId = null;
 var intervalSubtitleManager = function (flag) {
     if (flag) {
@@ -109,28 +82,6 @@ function changeSubTitle() {
     }
 }
 
-function showLoading() {
-    $('.loading').css({
-        'zIndex': '1000',
-        'display': 'block'
-    });
-    $('.loading').animateCss('fadeIn', function (component) {
-        $(component).css({
-            'animationDelay': '2s'
-        });
-    });
-}
-
-function hideLoading() {
-    $('.loading').animateCss('zoomOut', function (component) {
-        $(component).css({
-            'zIndex': '-2',
-            'animationDelay': '0',
-            'display': 'none'
-        });
-    });
-}
-
 function nextBackground() {
     if (countTitle < 3 && countTitle > 0) {
         countTitle++;
@@ -143,12 +94,6 @@ function backBackground() {
         countTitle--;
         changeTitleAndBack();
     }
-}
-
-function addEffect() {
-    $('.info').toggleClass('toEffect');
-    $('.video').toggleClass('toEffect');
-    $('.effectBack').animateCss('fadeOutRightBig');
 }
 
 $(document).ready(function () {
