@@ -12,7 +12,6 @@
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/jquery.mousewheel.min.js"></script>
     <script src="../js/loadingAndAnimate.js"></script>
-    <script src="../js/works.js"></script>
     <script src="../js/jquery.touchSwipe.min.js"></script>
     <link rel="icon" type="image/x-icon" href="../images/Ideias.png">
 </head>
@@ -25,7 +24,7 @@
         </div>
     </div>
     <header>
-        <div class="logo">
+        <div class="logo" style="display: none">
             <a href="../index.html">
                 <img src="../images/Ideias.png" alt="ideias">
             </a>
@@ -39,41 +38,36 @@
         </div>
         <div id="navigation" class="not-show">
             <nav>
-                <a href="#">Trabalhos</a>
-                <a href="./enterprise.html">Empresa</a>
+                <a style="color: #000" href="./works.html">Trabalhos</a>
+                <a href="#">Empresa</a>
                 <a href="./contact.html">Contato</a>
             </nav>
         </div>
         <div class="menu">
             <nav>
-                <a href="#">Trabalhos</a>
-                <a href="./enterprise.html">Empresa</a>
-                <a href="./contact.html">Contato</a>
+                <a style="color: #000" href="./works.html">Trabalhos</a>
+                <a style="color: #000" href="#">Empresa</a>
+                <a style="color: #000" href="./contact.html">Contato</a>
             </nav>
         </div>
         <div class="language">
-            <a href="#" class="special" onclick="changeSubTitle()">en</a>
+            <a href="#" style="color: #000" class="special" onclick="changeSubTitle()">en</a>
         </div>
     </header>
-    <div class="modal-info-left">
-        <div class="info">
-            <div class="content">
-                <hr>
-                <h1>MM Artes</h1>
-                <br>
-                <p>descrição</p>
-                <br>
-                <button onclick="goToSite()">Visitar Site</button>
+    <div class="contact">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1400.4259891986146!2d-38.56558992786012!3d-6.890260233158909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a473869649ee2d%3A0x6c4f4acc25445669!2sIdeias+Criativas!5e0!3m2!1spt-BR!2sbr!4v1521251256751"
+            frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div class="card-info">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/Ideias.png" alt="ideias">
+                </a>
+                <p>Telefone: 839999999</p>
+                <p>Facebook: Ideias Criativas</p>
+                <p>Instagram: Ideias Criativas</p>
             </div>
         </div>
     </div>
-    <div class="modal-info-right">
-        <div class="video">
-            <video src="../videos/ideias-marketing.mp4" autoplay muted playsinline loop></video>
-            <div class="video-background"></div>
-        </div>
-    </div>
-    <div class="effectBack"></div>
 </body>
 
 </html>

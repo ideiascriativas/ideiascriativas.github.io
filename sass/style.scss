@@ -369,6 +369,75 @@ body {
     display: none;
 }
 
+.enterprise {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #f2f2f2;
+    p {
+        color: #000;
+        width: 60%;
+        min-width: 300px;
+        margin-top: 300px;
+        margin-left: 100px;
+        word-spacing: 10px;
+        font-size: 130%;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-indent: 50px; // text-align: justify;
+    }
+    button {
+        position: absolute;
+        bottom: 0;
+        right: 200px;
+        padding: 50px;
+        border: none;
+        background: #7B04F9;
+        width: 200px;
+        text-transform: uppercase;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.contact {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #f2f2f2;
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+    .card-info {
+        position: fixed;
+        top: 140px;
+        left: 10px;
+        width: 330px;
+        height: 200px;
+        background: #fff;
+        box-shadow: 0 0 20px -10px #000;
+        .logo {
+            text-align: center;
+            img {
+                width: 100px;
+                height: auto;
+                padding: 5px;
+                margin: 0 auto;
+            }
+            p {
+                color: #000;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
 header {
     z-index: 5;
     position: fixed;
