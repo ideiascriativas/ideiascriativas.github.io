@@ -531,6 +531,17 @@ header {
     }
 }
 
+@media(max-width: 1250px) {
+    .enterprise {
+        p {
+            margin: 0 auto;
+            margin-top: 180px;
+            width: 88%;
+            font-size: 100%;
+        }
+    }
+}
+
 @media(max-width: 1000px) {
     .content {
         header {
@@ -590,6 +601,33 @@ header {
             right: 20px;
             a {
                 margin: 0;
+            }
+        }
+    }
+}
+
+@media(max-width: 580px) {
+    .enterprise {
+        p {
+            margin: 0 auto;
+            margin-top: 100px;
+            width: 95%;
+            font-size: 90%;
+            text-indent: 0;
+            text-align: center
+        }
+        button {
+            position: absolute;
+            bottom: 10px;
+            padding: 10px;
+            border: none;
+            background: #7B04F9;
+            width: 40%;
+            left: 30%;
+            right: 30%;
+            text-transform: uppercase;
+            &:hover {
+                cursor: pointer;
             }
         }
     }
